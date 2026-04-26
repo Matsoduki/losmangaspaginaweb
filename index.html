@@ -37,7 +37,7 @@
             position: relative;
         }
 
-        /* FONDO ATRACTIVO Y PROFESIONAL (Grid Cyberpunk animada) */
+        /* FONDO DINÁMICO */
         .cyber-grid {
             position: fixed;
             top: 0; left: 0; width: 100vw; height: 100vh;
@@ -45,11 +45,10 @@
                 linear-gradient(rgba(255, 47, 214, 0.05) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(0, 229, 255, 0.05) 1px, transparent 1px);
             background-size: 50px 50px;
-            background-position: center center;
             z-index: -2;
             transform: perspective(500px) rotateX(60deg) translateY(-100px) scale(3);
             animation: gridMove 15s linear infinite;
-            opacity: 0.6;
+            opacity: 0.4;
         }
 
         @keyframes gridMove {
@@ -57,41 +56,8 @@
             100% { transform: perspective(500px) rotateX(60deg) translateY(50px) scale(3); }
         }
 
-        /* Luces flotantes animadas */
-        .glow-orb {
-            position: fixed;
-            border-radius: 50%;
-            filter: blur(120px);
-            z-index: -1;
-            animation: pulse 8s ease-in-out infinite alternate;
-        }
-        .orb-1 {
-            top: -10%; left: -10%;
-            width: 40vw; height: 40vw;
-            background: var(--primary);
-            opacity: 0.25;
-        }
-        .orb-2 {
-            bottom: -10%; right: -10%;
-            width: 50vw; height: 50vw;
-            background: var(--secondary);
-            opacity: 0.15;
-            animation-delay: -4s;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(0.8); opacity: 0.15; }
-            100% { transform: scale(1.2); opacity: 0.3; }
-        }
-
-        h1, h2, h3, .logo {
-            font-family: 'Space Grotesk', sans-serif;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
+        h1, h2, h3, .logo { font-family: 'Space Grotesk', sans-serif; }
+        a { text-decoration: none; color: inherit; }
 
         /* Navbar Ultra Glass */
         nav {
@@ -99,7 +65,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 1.2rem 5%;
-            background: rgba(3, 3, 5, 0.6);
+            background: rgba(3, 3, 5, 0.8);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             position: fixed;
@@ -107,7 +73,6 @@
             top: 0;
             z-index: 1000;
             border-bottom: 1px solid var(--glass-border);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
         }
 
         .logo {
@@ -117,8 +82,7 @@
             letter-spacing: 2px;
             text-shadow: 0 0 10px var(--primary-glow);
         }
-
-        .logo span { color: var(--secondary); text-shadow: 0 0 10px var(--secondary-glow);}
+        .logo span { color: var(--secondary); }
 
         .nav-links { display: flex; gap: 3rem; }
         .nav-links a {
@@ -127,168 +91,148 @@
             letter-spacing: 2px;
             font-weight: 600;
             color: var(--muted);
-            transition: all 0.3s;
-            position: relative;
+            transition: 0.3s;
         }
-        .nav-links a:hover { color: var(--text); }
-        .nav-links a::after {
-            content: ''; position: absolute; width: 0; height: 2px;
-            bottom: -5px; left: 0; background: var(--secondary);
-            transition: width 0.3s;
-        }
-        .nav-links a:hover::after { width: 100%; }
+        .nav-links a:hover { color: var(--secondary); }
 
-        /* Botones Premium */
-        .btn {
-            display: inline-flex; align-items: center; justify-content: center;
-            padding: 1rem 2.5rem; border-radius: 4px;
-            font-weight: 700; font-family: 'Space Grotesk', sans-serif;
-            text-transform: uppercase; letter-spacing: 2px;
-            cursor: pointer; transition: all 0.4s ease;
-            position: relative; overflow: hidden;
-            z-index: 1;
-        }
-
-        .btn-primary {
-            background: transparent; color: var(--text);
-            border: 1px solid var(--primary);
-            box-shadow: 0 0 15px var(--primary-glow), inset 0 0 10px var(--primary-glow);
-        }
-        .btn-primary::before {
-            content: ''; position: absolute; top: 0; left: 0;
-            width: 100%; height: 100%; background: var(--primary);
-            z-index: -1; transform: scaleX(0); transform-origin: right;
-            transition: transform 0.4s ease;
-        }
-        .btn-primary:hover::before { transform: scaleX(1); transform-origin: left; }
-        .btn-primary:hover { box-shadow: 0 0 30px var(--primary-glow); }
-
-        /* Hero Section */
+        /* HERO SECTION PROFESIONAL */
         .hero {
-            min-height: 100vh; display: flex; flex-direction: column;
-            justify-content: center; padding: 0 5%;
-            position: relative; overflow: hidden;
+            min-height: 100vh; 
+            display: flex; 
+            flex-direction: column;
+            justify-content: center; 
+            padding: 0 5%;
+            position: relative; 
+            overflow: hidden;
+            /* La imagen se fusiona con el fondo negro */
+            background: 
+                linear-gradient(to right, rgba(3, 3, 5, 0.95) 20%, rgba(3, 3, 5, 0.4) 60%, rgba(3, 3, 5, 0.8) 100%),
+                linear-gradient(to bottom, transparent 70%, var(--bg) 100%),
+                url('1777239104278.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
         }
 
-        .hero::after {
-            content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 200px;
-            background: linear-gradient(to top, var(--bg), transparent);
+        .hero-content { 
+            max-width: 900px; 
+            margin-top: 5vh; 
+            position: relative; 
+            z-index: 2; 
         }
-
-        .hero-content { max-width: 900px; margin-top: 10vh; position: relative; z-index: 2; }
 
         .hero h1 {
-            font-size: clamp(3.5rem, 8vw, 7rem);
-            line-height: 1.1; margin-bottom: 1.5rem; text-transform: uppercase;
+            font-size: clamp(3.5rem, 8vw, 6.5rem);
+            line-height: 1; margin-bottom: 1.5rem; text-transform: uppercase;
         }
 
         .hero h1 .outline {
-            color: transparent; -webkit-text-stroke: 1px var(--text); display: block;
+            color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,0.5); display: block;
         }
 
         .hero h1 .glow-text {
-            background: linear-gradient(to right, var(--text), var(--secondary), var(--primary));
+            background: linear-gradient(to right, #fff, var(--secondary), var(--primary));
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 15px rgba(0,229,255,0.3));
         }
 
         .hero p {
-            font-size: 1.25rem; color: var(--muted); max-width: 600px;
-            margin-bottom: 3rem; font-weight: 300; border-left: 2px solid var(--primary);
+            font-size: 1.2rem; color: #ccc; max-width: 550px;
+            margin-bottom: 3rem; font-weight: 300; border-left: 3px solid var(--primary);
             padding-left: 1.5rem;
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
         }
 
-        .hero-buttons { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+        /* Botón Premium */
+        .btn {
+            display: inline-flex; align-items: center; justify-content: center;
+            padding: 1.2rem 2.5rem; border-radius: 2px;
+            font-weight: 700; font-family: 'Space Grotesk', sans-serif;
+            text-transform: uppercase; letter-spacing: 2px;
+            cursor: pointer; transition: all 0.4s ease;
+            background: transparent; color: var(--text);
+            border: 1px solid var(--primary);
+            box-shadow: 0 0 15px var(--primary-glow);
+        }
 
-        /* Cinta animada */
+        .btn:hover {
+            background: var(--primary);
+            color: #000;
+            box-shadow: 0 0 40px var(--primary-glow);
+            transform: translateY(-2px);
+        }
+
+        /* Marquee */
         .marquee-container {
             width: 100%; overflow: hidden; background: rgba(255, 47, 214, 0.1);
             border-top: 1px solid var(--primary); border-bottom: 1px solid var(--primary);
-            padding: 1.2rem 0; transform: rotate(-1.5deg) scale(1.05); margin: 6rem 0;
-            backdrop-filter: blur(5px); position: relative; z-index: 5;
+            padding: 1rem 0; transform: rotate(-1deg) scale(1.02); margin: 4rem 0;
+            z-index: 5;
         }
 
-        .marquee-content { display: flex; white-space: nowrap; animation: marquee 25s linear infinite; }
+        .marquee-content { display: flex; white-space: nowrap; animation: marquee 30s linear infinite; }
         .marquee-content span {
-            font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.2rem;
-            text-transform: uppercase; color: var(--text); padding: 0 2.5rem; letter-spacing: 2px;
+            font-family: 'Space Grotesk'; font-weight: 700; font-size: 1.1rem;
+            text-transform: uppercase; color: var(--text); padding: 0 3rem;
         }
-        .marquee-content span i { color: var(--secondary); font-style: normal; }
 
         @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
-        /* Secciones */
-        section { padding: 8rem 5%; position: relative; z-index: 2; }
-        .section-title { font-size: clamp(2.5rem, 5vw, 4rem); margin-bottom: 1rem; color: var(--text); text-transform: uppercase; }
-        .section-subtitle { color: var(--secondary); font-family: 'Space Grotesk'; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 3rem; display: block;}
-
-        /* Grid de Servicios */
+        /* Servicios */
+        section { padding: 6rem 5%; }
+        .section-title { font-size: 3rem; text-transform: uppercase; margin-bottom: 3rem; }
+        
         .servicios-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2.5rem; margin-top: 2rem;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
         }
 
         .card {
-            background: linear-gradient(145deg, rgba(25,25,35,0.6), rgba(10,10,15,0.8));
-            border: 1px solid var(--glass-border); border-radius: 8px;
-            padding: 3rem 2.5rem; transition: all 0.4s ease;
-            backdrop-filter: blur(10px); position: relative; overflow: hidden;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--glass-border);
+            padding: 2.5rem; border-radius: 4px; transition: 0.4s;
         }
 
-        .card::before {
-            content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%;
-            background: var(--primary); transition: 0.4s;
+        .card:hover {
+            border-color: var(--secondary);
+            background: rgba(0, 229, 255, 0.05);
+            transform: translateY(-5px);
         }
 
-        .card:hover { transform: translateY(-10px); border-color: rgba(255, 47, 214, 0.4); box-shadow: 0 15px 40px rgba(0,0,0,0.5); }
-        .card:hover::before { width: 100%; opacity: 0.05; }
+        .card h3 { color: var(--secondary); margin-bottom: 1rem; text-transform: uppercase; }
 
-        .card h3 { font-size: 1.8rem; color: var(--text); margin-bottom: 1rem; font-weight: 700; text-transform: uppercase; }
-        .card p { color: var(--muted); font-size: 1.05rem; font-weight: 300; }
-
-        /* Ubicación / Identidad */
+        /* Ubicación */
         .info-box {
-            background: rgba(0,229,255,0.03); border: 1px solid rgba(0,229,255,0.2);
-            padding: 4rem; border-radius: 8px; text-align: center; margin-top: 4rem;
+            background: linear-gradient(to bottom right, rgba(0,229,255,0.05), transparent);
+            border: 1px solid rgba(0,229,255,0.2);
+            padding: 4rem 2rem; border-radius: 4px; text-align: center;
         }
-        .info-box h2 { color: var(--secondary); margin-bottom: 1rem; font-size: 2.5rem; }
-        .info-box p { font-size: 1.2rem; color: var(--text); margin-bottom: 2rem; }
-        .address-tag { display: inline-block; background: rgba(255,255,255,0.05); padding: 1rem 2rem; border-radius: 50px; font-family: 'Space Grotesk'; letter-spacing: 1px;}
 
-        /* Footer */
+        .address-tag {
+            display: inline-block; background: rgba(255,255,255,0.05);
+            padding: 0.8rem 2rem; border-radius: 50px; margin-top: 1.5rem;
+        }
+
         footer {
-            background: #000; padding: 6rem 5% 3rem; border-top: 1px solid #222;
-            display: flex; flex-direction: column; align-items: center; text-align: center; position: relative; z-index: 2;
+            padding: 4rem 5%; text-align: center; border-top: 1px solid #111;
+            color: var(--muted); font-size: 0.9rem;
         }
-
-        .footer-logo { font-size: 2.5rem; font-family: 'Space Grotesk', sans-serif; font-weight: 900; margin-bottom: 1rem; letter-spacing: 3px;}
-        .footer-logo span { color: var(--primary); }
-
-        .social-links { display: flex; gap: 2rem; margin: 2rem 0; }
-        .social-links a {
-            color: var(--muted); font-family: 'Space Grotesk'; text-transform: uppercase;
-            letter-spacing: 2px; font-size: 0.9rem; transition: color 0.3s;
-        }
-        .social-links a:hover { color: var(--secondary); }
 
         @media (max-width: 768px) {
             .nav-links { display: none; }
+            .hero { background-attachment: scroll; }
             .hero h1 { font-size: 3rem; }
-            .hero-buttons { flex-direction: column; width: 100%; }
-            .btn { width: 100%; }
-            .info-box { padding: 2rem 1rem; }
         }
     </style>
 </head>
 <body>
 
     <div class="cyber-grid"></div>
-    <div class="glow-orb orb-1"></div>
-    <div class="glow-orb orb-2"></div>
 
     <nav>
         <div class="logo">LOS<span>MANGA</span></div>
         <div class="nav-links">
-            <a href="#estudio">El Estudio</a>
+            <a href="#estudio">Estudio</a>
             <a href="#servicios">Servicios</a>
             <a href="#ubicacion">Ubicación</a>
         </div>
@@ -296,68 +240,56 @@
 
     <section class="hero">
         <div class="hero-content">
+            <span style="color: var(--secondary); font-family: 'Space Grotesk'; letter-spacing: 4px; font-size: 0.8rem; border: 1px solid var(--secondary); padding: 4px 10px; margin-bottom: 20px; display: inline-block;">
+                SANTIAGO DE CHILE / PROVIDENCIA
+            </span>
             <h1>
                 <span class="outline">Peluquería</span>
                 <span class="glow-text">Otaku & Alternativa</span>
             </h1>
-            <p>Diseñamos looks con intención. El único estudio en Providencia especializado en técnica profesional, estética anime, J-fashion y cortes urbanos radicales.</p>
-            <div class="hero-buttons">
-                <a href="https://www.instagram.com/losmanga.cl?igsh=am1sdjE3MWFiOGxq" target="_blank" class="btn btn-primary">Agendar Cita en Instagram</a>
-            </div>
+            <p>Especialistas en técnica profesional, estética anime y cortes urbanos radicales. No es solo un cambio de look, es tu nueva identidad.</p>
+            <a href="https://www.instagram.com/losmanga.cl?igsh=am1sdjE3MWFiOGxq" target="_blank" class="btn">Agendar en Instagram</a>
         </div>
     </section>
 
     <div class="marquee-container">
         <div class="marquee-content">
-            <span><i>✦</i> CORTES DE ANIME <i>✦</i> ESTILISMO J-POP <i>✦</i> COLORACIÓN MANGA <i>✦</i> PEINADOS SAMURÁI <i>✦</i> TRATAMIENTOS SHINIGAMI <i>✦</i> TRENZAS OTAKU </span>
-            <span><i>✦</i> CORTES DE ANIME <i>✦</i> ESTILISMO J-POP <i>✦</i> COLORACIÓN MANGA <i>✦</i> PEINADOS SAMURÁI <i>✦</i> TRATAMIENTOS SHINIGAMI <i>✦</i> TRENZAS OTAKU </span>
+            <span>✦ CORTES DE ANIME ✦ ESTILISMO J-POP ✦ COLORACIÓN MANGA ✦ PEINADOS SAMURÁI ✦ TRATAMIENTOS SHINIGAMI ✦ TRENZAS OTAKU </span>
+            <span>✦ CORTES DE ANIME ✦ ESTILISMO J-POP ✦ COLORACIÓN MANGA ✦ PEINADOS SAMURÁI ✦ TRATAMIENTOS SHINIGAMI ✦ TRENZAS OTAKU </span>
         </div>
     </div>
 
     <section id="servicios">
-        <span class="section-subtitle">Técnica y Estética</span>
         <h2 class="section-title">Especialidades</h2>
         <div class="servicios-grid">
             <div class="card">
                 <h3>Cortes de Anime</h3>
-                <p>Traemos tu referencia 2D a la realidad. Especialistas en Hush Cut, Wolf cut, Hime cut y texturas asimétricas inspiradas en tus personajes favoritos.</p>
+                <p>Traemos tu referencia 2D a la realidad. Wolf cut, Hime cut y texturas asimétricas.</p>
             </div>
             <div class="card">
                 <h3>Coloración Manga</h3>
-                <p>Tonos neón, pasteles puros, split dye y bloques de color de alta saturación. Utilizamos pigmentos premium para colores fantasía vibrantes.</p>
+                <p>Tonos neón y split dye de alta saturación. Pigmentos premium para colores fantasía.</p>
             </div>
             <div class="card">
-                <h3>Tratamientos Shinigami</h3>
-                <p>Reparación intensiva post-decoloración. Recuperamos la estructura de tu cabello para que soporte bases extremas sin perder vida.</p>
-            </div>
-            <div class="card">
-                <h3>Estilismo J-Pop & V-Kei</h3>
-                <p>Arquitectura capilar, peinados con volumen, texturas urbanas japonesas y preparación profesional para eventos de Cosplay o sesiones fotográficas.</p>
+                <h3>Estilismo V-Kei</h3>
+                <p>Arquitectura capilar y texturas urbanas japonesas para eventos y sesiones.</p>
             </div>
         </div>
     </section>
 
     <section id="ubicacion">
         <div class="info-box">
-            <h2>Nuestra Base de Operaciones</h2>
-            <p>Visítanos en el corazón de la cultura alternativa de Santiago.</p>
+            <h2 style="text-transform: uppercase; margin-bottom: 1rem;">Base de Operaciones</h2>
+            <p>Visítanos en el epicentro de la cultura alternativa.</p>
             <div class="address-tag">
-                📍 Nueva de Lyon 45, Local 4L, Providencia, Santiago
+                📍 Nueva de Lyon 45, Local 4L, Providencia
             </div>
-            <br><br>
-            <a href="https://www.instagram.com/losmanga.cl?igsh=am1sdjE3MWFiOGxq" target="_blank" class="btn btn-primary" style="margin-top: 1rem;">Ver Trabajos & Agendar</a>
         </div>
     </section>
 
     <footer>
-        <div class="footer-logo">LOS<span>MANGA</span></div>
-        <p style="color: var(--muted); max-width: 400px; margin: 0 auto;">Peluquería alternativa y de autor. No es solo un corte, es tu identidad.</p>
-        
-        <div class="social-links">
-            <a href="https://www.instagram.com/losmanga.cl?igsh=am1sdjE3MWFiOGxq" target="_blank">Instagram</a>
-        </div>
-        
-        <p style="color: #444; font-size: 0.8rem; margin-top: 3rem;">&copy; 2026 Peluquería Otaku Los Manga. Todos los derechos reservados.</p>
+        <div class="logo" style="font-size: 1.2rem; margin-bottom: 1rem;">LOS<span>MANGA</span></div>
+        <p>&copy; 2026 Peluquería Otaku Los Manga. Todos los derechos reservados.</p>
     </footer>
 
 </body>
